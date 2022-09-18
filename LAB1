@@ -1,0 +1,106 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <math.h>
+
+void task1(){
+    float len, v, s;
+    printf("%s", "Input len: ");
+    scanf("%f",&len);
+    
+    v = len*len*len;
+    s = len*len*4;
+    printf("V = %f S = %f", v,s);
+}
+
+void task2(){
+    float a, b, c;
+    
+    printf("%s", "Input len numbers (3) ");
+    scanf("%f",&a);
+    scanf("%f",&b);
+    scanf("%f",&c);
+    
+    float numbers[3] = {a,b,c};
+    
+    for(int i = 0; i<3; ++i){
+        float number = numbers[i];
+        if(fmod(number,2)==0){
+            printf("%f is chetnoe\n", number);
+        }
+            
+    }
+
+    
+}
+
+void task3(){
+    float a,b,c,D, sqrtD, x1,x2,x;
+    printf("%s", "Input a, b,c: ");
+    scanf("%f",&a);
+    scanf("%f",&b);
+    scanf("%f",&c);
+    
+    D = b*b-4*a*c;
+    printf("%f\n", D);
+    
+    sqrtD = sqrt(D);
+    printf("%f", sqrtD);
+    
+    if(sqrtD>0){
+        x1 = (-b+sqrtD)/(2*a);
+        x2 = (-b-sqrtD)/(2*a);
+
+        printf("x1 = %f\n", x1);
+        printf("x2 = %f\n", x2);
+        
+
+    }
+    if(sqrtD<0) printf("No have X");
+    if(sqrtD==0) {
+        x = -b/(2*a);
+        printf("x = %f\n", x);
+        }
+}
+void task4(){
+    int number,dev;
+    printf("Введите кол-во грбов: ");
+    scanf("%d", &number);
+    dev = number%10;
+    char main_word[10] = "гриб";
+    
+    
+    if(number>=11 && number<=20) printf("Мы нашли %d %sов в лесу",number,main_word);
+    else{
+    if(dev==0) printf("Мы нашли %d %sов в лесу",number,main_word);
+    if(dev == 1) printf("Мы нашли  %d  %s в лесу",number,main_word);
+    if(dev>=2 && dev <=4) printf("Мы нашли  %d  %sа в лесу",number,main_word);
+    if(dev>=5 && dev <=9) printf("Мы нашли  %d  %sов в лесу",number,main_word);
+    }
+    
+}
+int main() {
+    
+    int function;
+    printf("Input ID of task (1, 2, 3 or 4): ");
+    scanf("%d", &function);
+    switch (function){
+        case 1:
+            task1();
+            break;
+        case 2:
+            task2();
+            break;
+        case 3:
+            task3();
+            break;
+        case 4:
+            task4();
+            break;
+        default:
+            printf("Error, try again with other params");
+            
+            
+
+}
+    return 0;
+}
