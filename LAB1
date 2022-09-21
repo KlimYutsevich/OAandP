@@ -2,27 +2,27 @@
 #include <stdio.h>
 #include <math.h>
 
-void task1(){
-    float len, v, s;
+void task1(){// задача 1
+    float len, v, s; // определяем переменные
     printf("%s", "Input len: ");
-    scanf("%f",&len);
+    scanf("%f",&len); // принимаем на ввод ребро
     
-    v = len*len*len;
-    s = len*len*4;
+    v = len*len*len; // формула объёма
+    s = len*len*4; // формула площади (боковой)
     printf("V = %f S = %f", v,s);
 }
 
 void task2(){
-    float a, b, c;
+    float a, b, c;// определяем переменные
     
     printf("%s", "Input len numbers (3) ");
-    scanf("%f",&a);
-    scanf("%f",&b);
-    scanf("%f",&c);
+    scanf("%f",&a);// принимаем на ввод а
+    scanf("%f",&b);// принимаем на ввод б
+    scanf("%f",&c);// принимаем на ввод с
     
-    float numbers[3] = {a,b,c};
+    float numbers[3] = {a,b,c}; // определяем массив введённых чисел, применим позже
     
-    for(int i = 0; i<3; ++i){
+    for(int i = 0; i<3; ++i){ // проходим циклом по массиву
         float number = numbers[i];
         if(fmod(number,2)==0){
             printf("%f is chetnoe\n", number);
@@ -34,19 +34,19 @@ void task2(){
 }
 
 void task3(){
-    float a,b,c,D, sqrtD, x1,x2,x;
+    float a,b,c,D, sqrtD, x1,x2,x; // определяем переменные 
     printf("%s", "Input a, b,c: ");
     scanf("%f",&a);
     scanf("%f",&b);
     scanf("%f",&c);
     
-    D = b*b-4*a*c;
+    D = b*b-4*a*c; // формула Д
     printf("%f\n", D);
     
     sqrtD = sqrt(D);
     printf("%f", sqrtD);
     
-    if(sqrtD>0){
+    if(sqrtD>0){ // проверяем условие
         x1 = (-b+sqrtD)/(2*a);
         x2 = (-b-sqrtD)/(2*a);
 
