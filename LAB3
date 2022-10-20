@@ -30,11 +30,13 @@ void min_sum(int* numbers, int length)
     
     int min = numbers[0];
     int sum=0;
+    int zeros=0;
     
     
 
     for(int i = 1; i<length; i++){
         if(min>numbers[i]){
+            if(numbers[i] == 0) zeros++;
             min = numbers[i];
             sum=0;
         }
@@ -43,6 +45,7 @@ void min_sum(int* numbers, int length)
     }  
     printf("\nMIN: %d", min);
     printf("\nSUM: %d", sum);
+    printf("\nZeros: %d", zeros);
 
 
     
