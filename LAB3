@@ -1,0 +1,202 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h> 
+
+void randinput(int* mas, int length) {
+    srand(time(NULL));
+    for (int i = 0; i < length; i++)
+        mas[i] = rand() % 201 - 100; 
+    //Генерация рандомных чисел от -100 до 100
+    for (int i = 0; i < length; i++){
+        printf("%d ", mas[i]);
+    }
+    printf("\nElements of the array::");
+}
+void input(int* mas, int length) {
+    for (int i = 0; i < length; i++) {
+        printf("arr[%d] = ", i);
+        while (scanf("%d", &mas[i]) != 1 || getchar() != '\n')
+        {
+            printf("Wrong input!\n");
+            rewind(stdin);
+
+        }
+    }
+}
+
+
+void min_sum(int* numbers, int length)
+{   
+    
+    int min = numbers[0];
+    int sum=0;
+    
+    
+
+    for(int i = 1; i<length; i++){
+        if(min>numbers[i]){
+            min = numbers[i];
+            sum=0;
+        }
+        else sum+=numbers[i];
+        
+    }  
+    printf("\nMIN: %d", min);
+    printf("\nSUM: %d", sum);
+
+
+    
+}
+
+void left(int* A, int length){
+    int step=3, amount=0,counter1=0, even=0;
+    printf("input step: ");
+    while (scanf("%d", &step) != 1 || getchar() != '\n')
+        {
+            printf("Wrong input!\n");
+            rewind(stdin);
+
+        }
+    
+    for(int i = 0; i<length; i++){
+        if(A[i]%2==0){
+            even++;
+        }
+    }
+    amount=step/even;
+    amount+=2;
+    int B[amount*even];
+    
+    while(amount--){
+        for(int i = 0; i<length; i++){
+            if(A[i] % 2==0){
+                B[counter1]=A[i];
+                counter1++;
+            }
+        }
+    }
+    counter1=0;
+    for(int i = 0; i<length; i++){
+        if(A[i]%2==0){
+            A[i] = B[counter1+step];
+            counter1++;
+        }
+    }
+   
+    for(int i = 0; i<length; i++){
+        printf("%d", A[i]);
+    }
+    
+}
+
+void sum(int* A, int length, int choose){ 
+    int B[length];
+    if(choose==1){
+        randinput(B, length);
+    }
+    else{
+        input(B, length);
+    }
+     
+    int C[length+2]; 
+     
+    int ost,whole,sum, index; 
+    for(int i = length-1; i>=0; i--){ 
+        sum = A[i]+B[i]; 
+        if(sum>=10){ 
+            ost = sum-10; 
+            whole = 1; 
+             
+        } 
+        else{ 
+            whole = sum; 
+            ost=0; 
+             
+        } 
+        if(ost!=0){ 
+            C[i]=ost; 
+            A[i-1]+=1; 
+        } 
+        else{ 
+            C[i]=whole; 
+        } 
+        whole=0; 
+        ost=0; 
+    
+        
+    } 
+    printf("Result: ");
+    for(int i = 0; i<length; i++){
+        printf("%d", C[i]);
+    }
+    
+ 
+}
+
+
+int main()
+{   int length, choose;
+
+    
+    printf("1)Length = 100\n2)Input length\nChoose: ");
+    scanf("%d", &choose);
+    switch(choose){
+        case 1:
+        length = 100;
+        break;
+        case 2:{
+            printf("Input length of array: ");
+    while (!scanf("%d", &length) || length < 0 || length > 100)
+    {
+        rewind(stdin);
+        printf("\nWrong input: ");
+    }
+    rewind(stdin);
+        }
+        break;
+        default:
+        printf("Try again");
+        
+    }
+    int A[length];
+    int choose2, operation;
+    printf("1)Random numbers\n2)Input numbers\nChoose: ");
+    scanf("%d", &choose);
+    
+    switch(choose){
+        case 1:
+        randinput(A, length);
+        break;
+        case 2:
+        input(A, length);
+        break;
+        default:
+        printf("Try again");
+        
+    
+        printf("Choose operation(1, 2, 3): ");
+        
+        
+    }
+    scanf("%d", &operation);
+    switch(operation){
+        
+        
+    case 1:
+    min_sum(A, length);
+    break;
+    case 2:
+    left(A, length);
+    break;
+    case 3:
+    sum(A, length, choose);
+    break;
+    default:
+    printf("Try again: ");
+            
+        
+    }
+    
+    return 0;
+    
+}
