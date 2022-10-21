@@ -177,10 +177,11 @@ int main()
         printf("Try again");
         
     
-        printf("Choose operation(1, 2, 3): ");
+        
         
         
     }
+    printf("Choose operation(1, 2, 3): ");
     scanf("%d", &operation);
     switch(operation){
         
