@@ -10,7 +10,7 @@ void randinput(int* mas, int length) {
     for (int i = 0; i < length; i++){
         printf("%d ", mas[i]);
     }
-    printf("\nElements of the array::");
+    printf("\nElements of the array::\n");
 }
 void input(int* mas, int length) {
     for (int i = 0; i < length; i++) {
@@ -87,7 +87,7 @@ void left(int* A, int length){
     }
    
     for(int i = 0; i<length; i++){
-        printf("%d", A[i]);
+        printf("%d ", A[i]);
     }
     
 }
@@ -101,36 +101,40 @@ void sum(int* A, int length, int choose){
         input(B, length);
     }
      
-    int C[length+2]; 
+    int C[length]; 
      
     int ost,whole,sum, index; 
-    for(int i = length-1; i>=0; i--){ 
-        sum = A[i]+B[i]; 
-        if(sum>=10){ 
-            ost = sum-10; 
-            whole = 1; 
-             
-        } 
-        else{ 
-            whole = sum; 
-            ost=0; 
-             
-        } 
-        if(ost!=0){ 
-            C[i]=ost; 
-            A[i-1]+=1; 
-        } 
-        else{ 
-            C[i]=whole; 
-        } 
-        whole=0; 
-        ost=0; 
     
+    for(int i = length-1; i>=0; i--){
+        sum = A[i]+B[i];
+        if(sum>=10){
+            ost = sum-10;
+            whole=1;
+        }
+        else{
+            whole=sum;
+            ost=0;
+        }
         
-    } 
-    printf("Result: ");
-    for(int i = 0; i<length; i++){
+        if(ost!=0){
+            C[i] = ost;
+            A[i-1]+=whole;
+            
+        }
+        else{
+            C[i] = whole;
+        }
+        
+        sum=0;
+        whole=0;
+        
+    }
+    
+    int len = sizeof(C)/sizeof(int);
+    for(int i = 0; i<=len-1; i++){
         printf("%d", C[i]);
+        
+        
     }
     
  
