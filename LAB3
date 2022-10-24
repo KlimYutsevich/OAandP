@@ -101,7 +101,13 @@ void sum(int* A, int length, int choose){
         input(B, length);
     }
      
-    int C[length]; 
+    int C[length+1]; 
+    
+    for(int i = 0; i<=length; i++){
+        C[i]=0;
+    }
+    
+    
      
     int ost,whole,sum, index; 
     
@@ -117,21 +123,38 @@ void sum(int* A, int length, int choose){
         }
         
         if(ost!=0){
-            C[i] = ost;
-            A[i-1]+=whole;
+            C[i] += whole;
+            C[i+1] += ost;
+            // A[i-1]+=whole;
             
         }
         else{
-            C[i] = whole;
+            C[i+1] += whole;
         }
         
         sum=0;
         whole=0;
+        ost=0;
         
     }
     
-    int len = sizeof(C)/sizeof(int);
-    for(int i = 0; i<=len-1; i++){
+    int len = length+1;
+    printf("Result: ");
+    for(int i = 1; i<length; i++){
+        
+        printf("%d", A[i]);
+    }
+    printf(" + ");
+    for(int i = 1; i<length; i++){
+        
+        printf("%d", B[i]);
+        
+        
+    }
+    printf(" = ");
+    if(C[0] != 0 ) printf("%d", C[0]);
+    for(int i = 1; i<len; i++){
+        
         printf("%d", C[i]);
         
         
@@ -146,7 +169,13 @@ int main()
 
     
     printf("1)Length = 100\n2)Input length\nChoose: ");
-    scanf("%d", &choose);
+    while (!scanf("%d", &choose) || choose < 0 || choose > 2)
+    {
+        rewind(stdin);
+        printf("\nWrong input: ");
+    }
+    rewind(stdin);
+    // scanf("%d", &choose);
     switch(choose){
         case 1:
         length = 100;
@@ -168,7 +197,13 @@ int main()
     int A[length];
     int choose2, operation;
     printf("1)Random numbers\n2)Input numbers\nChoose: ");
-    scanf("%d", &choose);
+    // scanf("%d", &choose);
+    while (!scanf("%d", &choose) || choose < 0 || choose > 2)
+    {
+        rewind(stdin);
+        printf("\nWrong input: ");
+    }
+    rewind(stdin);
     
     switch(choose){
         case 1:
@@ -186,7 +221,15 @@ int main()
         
     }
     printf("Choose operation(1, 2, 3): ");
-    scanf("%d", &operation);
+    
+    
+    while (!scanf("%d", &operation) || operation < 0 || operation > 3)
+    {
+        rewind(stdin);
+        printf("\nWrong input: ");
+    }
+    rewind(stdin);
+    
     switch(operation){
         
         
